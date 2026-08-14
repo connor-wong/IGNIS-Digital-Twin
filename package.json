@@ -1,0 +1,54 @@
+{
+  "name": "esp32-s3-imu-digital-twin",
+  "version": "1.0.0",
+  "description": "Electron desktop digital twin for an ESP32-S3 MPU-9250 IMU over USB serial.",
+  "author": "Gripper Digital Twin",
+  "private": true,
+  "type": "module",
+  "main": "out/main/main.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "tsc --noEmit && electron-vite build",
+    "preview": "electron-vite preview",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.17.10",
+    "@serialport/parser-readline": "^12.0.0",
+    "serialport": "^12.0.0",
+    "three": "^0.171.0",
+    "zustand": "^5.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  },
+  "build": {
+    "appId": "com.gripperdigitaltwin.esp32imu",
+    "productName": "ESP32 IMU Digital Twin",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/@serialport/**/*",
+      "node_modules/serialport/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
